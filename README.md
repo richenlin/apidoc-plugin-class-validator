@@ -3,7 +3,7 @@ An [apidoc](http://apidocjs.com/) plugin for [class validator](https://github.co
 
 ## Install
 ```
-npm i apidoc-plugin-class-validator
+npm i apidoc-plugin-class
 ```
 
 ## Usage
