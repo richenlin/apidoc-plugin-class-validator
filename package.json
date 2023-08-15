@@ -1,27 +1,27 @@
 {
-  "name": "apidoc-plugin-class-validator",
+  "name": "apidoc-plugin-class",
   "version": "0.0.3",
-  "description": "An apidoc plugin for class validator",
+  "description": "An apidoc plugin for class",
   "main": "dist/index.js",
-  "dependencies": {
-    "ts-simple-ast": "^20.0.0"
-  },
-  "devDependencies": {
-    "@types/mocha": "^5.2.5",
-    "apidoc": "^0.17.7",
-    "apidoc-core": "^0.8.3",
-    "class-validator": "^0.9.1",
-    "mocha": "^5.2.0",
-    "should": "^13.2.3",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "tslint-config-klg": "^1.0.5"
-  },
   "scripts": {
     "build": "tsc -p .",
     "doc": "./node_modules/.bin/apidoc -i test/src/ -o docs",
     "test": "npm run build && mocha -bail --no-deprecation --compilers ts:ts-node/register -R spec -t 50000 -r should --recursive test/"
   },
-  "author": "hank <yuanhang.zheng@qq.com> (http://zhengyhn.github.io)",
-  "license": "MIT"
+  "authors": [
+    "hank <yuanhang.zheng@qq.com> (http://zhengyhn.github.io)",
+    "richenlin <richenlin@gmail.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mocha": "^10.0.1",
+    "apidoc": "^1.1.0",
+    "apidoc-core": "^0.11.1",
+    "class-validator": "^0.14.0",
+    "mocha": "^10.2.0",
+    "should": "^13.2.3"
+  },
+  "dependencies": {
+    "ts-simple-ast": "^9.5.0"
+  }
 }

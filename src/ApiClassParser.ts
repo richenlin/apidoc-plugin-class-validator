@@ -15,12 +15,12 @@ export class ApiClassParser {
   protected filePath: string
   protected className: string
   private ast
-  private typeMap = {
+  private typeMap: any = {
     'apiSuccessClass': 'apiSuccess',
     'apiParamClass': 'apiParam'
   }
 
-  constructor (type) {
+  constructor(type: string) {
     this.ast = new Project()
     this.type = type
   }
@@ -30,14 +30,14 @@ export class ApiClassParser {
    * @param elements
    * @param element
    */
-  parseElements (elements, element) {
+  parseElements(elements: any[], element: any) {
     elements.pop()
     this.extractElementContent(element.content)
-    const classAst = this.getClassAst({filePath: this.filePath, className: this.className})
+    const classAst = this.getClassAst({ filePath: this.filePath, className: this.className })
     if (!classAst) {
       return elements
     }
-    const newElements = this.transferToNewElement({filePath: this.filePath, classAst, prefix: ''})
+    const newElements = this.transferToNewElement({ filePath: this.filePath, classAst, prefix: '' })
 
     elements.push(...newElements)
   }
@@ -46,7 +46,7 @@ export class ApiClassParser {
    * Get apidoc elements from class ast
    * @param param0
    */
-  private transferToNewElement ({filePath, classAst, prefix}): IElement[] {
+  private transferToNewElement({ filePath, classAst, prefix }: any): IElement[] {
     const properties = classAst.getProperties()
     let elements: IElement[] = []
     for (const property of properties) {
@@ -68,7 +68,7 @@ export class ApiClassParser {
         sourceName: transferParserType
       })
       if (!this.isNativeType(type)) {
-        const childAst = this.getClassAst({filePath, className: type.replace('[]', '')})
+        const childAst = this.getClassAst({ filePath, className: type.replace('[]', '') })
         if (childAst) {
           const childs = this.transferToNewElement({ filePath, classAst: childAst, prefix: name })
           elements.push(...childs)
@@ -82,7 +82,7 @@ export class ApiClassParser {
    * Extract file path and class name from element definition
    * @param content element definition
    */
-  private extractElementContent (content: string) {
+  private extractElementContent(content: string) {
     let startPos = content.indexOf('(')
     let endPos = content.indexOf(')', startPos)
     this.filePath = content.substring(startPos + 1, endPos)
@@ -91,16 +91,16 @@ export class ApiClassParser {
     this.className = content.substring(startPos + 1, endPos)
   }
 
-  private getClassAst ({filePath, className}) {
+  private getClassAst({ filePath, className }: any) {
     const file = this.ast.addExistingSourceFile(filePath)
     return file.getClass(className)
   }
 
-  private capitalize (text) {
+  private capitalize(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
   }
 
-  private isNativeType (propType) {
+  private isNativeType(propType: string) {
     return ['boolean', 'string', 'number', 'Date', 'any'].includes(propType)
   }
 }

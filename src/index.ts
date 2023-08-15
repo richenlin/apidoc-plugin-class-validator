@@ -1,15 +1,15 @@
-import {ApiClassParser} from './ApiClassParser'
+import { ApiClassParser } from './ApiClassParser'
 
-export function init (app) {
+export function init(app: any) {
   const parser = Parser.getInstance()
-  app.addHook('parser-find-elements', (...args) => parser.parseElements.apply(parser, args), 200)
+  app.addHook('parser-find-elements', (...args: any[]) => parser.parseElements.apply(parser, args), 200)
 }
 
 class Parser {
-  private static instance: Parser
-  private map
+  private static instance: Parser;
+  private map: any;
 
-  constructor () {
+  constructor() {
     // Supported types now
     const types = [
       'apiParamClass',
@@ -21,7 +21,7 @@ class Parser {
     }
   }
 
-  static getInstance () {
+  static getInstance() {
     return this.instance || (this.instance = new Parser())
   }
 
@@ -33,7 +33,7 @@ class Parser {
    * @param block
    * @param filename
    */
-  parseElements (elements, element, block, filename) {
+  parseElements(elements: any[], element: any, block: any, filename: any) {
     if (!this.map[element.name]) {
       return
     }
