@@ -58,4 +58,4 @@ export function register () {
 
 - Open the docs
 
-![demo](https://github.com/zhengyhn/apidoc-plugin-class-validator/blob/master/demo.png?raw=true)
+![demo](https://github.com/richenlin/apidoc-plugin-class-validator/blob/master/demo.png?raw=true)
