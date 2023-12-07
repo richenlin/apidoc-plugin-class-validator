@@ -8,7 +8,7 @@
     "doc": "./node_modules/.bin/apidoc -i test/src/ -o docs",
     "prerelease": "npm test && npm run build",
     "release": "standard-version",
-    "prepublishOnly": "npm run prerelease",
+    "prepublishOnly": "npm run prerelease && git push --follow-tags origin",
     "test": "npm run build && jest --passWithNoTests --detectOpenHandles"
   },
   "authors": [
