@@ -6,7 +6,10 @@
   "scripts": {
     "build": "tsc -p .",
     "doc": "./node_modules/.bin/apidoc -i test/src/ -o docs",
-    "test": "npm run build && mocha -bail --no-deprecation --compilers ts:ts-node/register -R spec -t 50000 -r should --recursive test/"
+    "prerelease": "npm test && npm run build",
+    "release": "standard-version",
+    "prepublishOnly": "npm run prerelease",
+    "test": "npm run build && jest --passWithNoTests --detectOpenHandles"
   },
   "authors": [
     "hank <yuanhang.zheng@qq.com> (http://zhengyhn.github.io)",
@@ -14,14 +17,24 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/mocha": "^10.0.1",
-    "apidoc": "^1.1.0",
-    "apidoc-core": "^0.11.1",
+    "@commitlint/cli": "^17.x.x",
+    "@commitlint/config-conventional": "^17.x.x",
+    "@types/jest": "^29.x.x",
+    "apidoc": "^1.2.0",
+    "apidoc-core": "^0.15.0",
     "class-validator": "^0.14.0",
-    "mocha": "^10.2.0",
-    "should": "^13.2.3"
+    "conventional-changelog-cli": "^2.x.x",
+    "eslint-plugin-jest": "^27.x.x",
+    "husky": "^4.x.x",
+    "jest": "^29.x.x",
+    "jest-html-reporters": "^3.x.x",
+    "should": "^13.x.x",
+    "standard-version": "^9.x.x",
+    "ts-jest": "^29.x.x",
+    "ts-node": "^10.x.x",
+    "typescript": "^5.x.x"
   },
   "dependencies": {
-    "ts-simple-ast": "^9.5.0"
+    "ts-morph": "^19.0.0"
   }
 }

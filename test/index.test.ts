@@ -2,16 +2,16 @@ import * as apidoc from 'apidoc-core'
 import * as fs from 'fs-extra'
 import * as should from 'should'
 
-describe('test generate doc', async function () {
-  let logger = {
-    debug  : console.log,
-    verbose: console.log,
-    info   : console.log,
-    warn   : console.log,
-    error  : console.log
-  }
 
-  before(async function () {
+describe('test generate doc', function () {
+  let logger = {
+    debug: console.log,
+    verbose: console.log,
+    info: console.log,
+    warn: console.log,
+    error: console.log
+  }
+  beforeAll(async function () {
     fs.removeSync('./tmp/')
   })
 
@@ -23,11 +23,12 @@ describe('test generate doc', async function () {
       'version': '0.0.0'
     })
 
+
     let api = apidoc.parse({
       src: 'test/src/'
     })
     let createdContent = JSON.parse(api.data)
-    const {parameter, success} = createdContent[0]
+    const { parameter, success } = createdContent[0]
     console.log(JSON.stringify(createdContent))
 
     should.equal(parameter.fields.Parameter[0].field, 'phone')

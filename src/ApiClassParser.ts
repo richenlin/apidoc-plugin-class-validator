@@ -1,4 +1,4 @@
-import { Project } from 'ts-simple-ast'
+import { Project } from 'ts-morph'
 
 type IElement = {
   content: string
@@ -92,7 +92,7 @@ export class ApiClassParser {
   }
 
   private getClassAst({ filePath, className }: any) {
-    const file = this.ast.addExistingSourceFile(filePath)
+    const file = this.ast.addSourceFileAtPath(filePath)
     return file.getClass(className)
   }
 
