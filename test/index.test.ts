@@ -28,12 +28,16 @@ describe('test generate doc', function () {
       src: 'test/src/'
     })
     let createdContent = JSON.parse(api.data)
-    const { parameter, success } = createdContent[0]
+    // const { parameter, success } = createdContent[0]
+    const { body, success } = createdContent[0]
     console.log(JSON.stringify(createdContent))
 
-    should.equal(parameter.fields.Parameter[0].field, 'phone')
-    should.equal(parameter.fields.Parameter[1].field, 'name')
-    should.equal(parameter.fields.Parameter[2].field, 'age')
+    // should.equal(parameter.fields.Parameter[0].field, 'phone')
+    // should.equal(parameter.fields.Parameter[1].field, 'name')
+    // should.equal(parameter.fields.Parameter[2].field, 'age')
+    should.equal(body[0].field, 'phone')
+    should.equal(body[1].field, 'name')
+    should.equal(body[2].field, 'age')
 
     const fields = success.fields['Success 200']
     should.equal(fields[0].field, 'userId')

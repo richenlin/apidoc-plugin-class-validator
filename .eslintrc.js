@@ -40,5 +40,6 @@ module.exports = {
         argsIgnorePattern: '^_', // 允许以 _ 开头的参数
       }
     ],
+    'prefer-spread': ['off']
   },
 };

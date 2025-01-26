@@ -35,13 +35,13 @@ class ApiClassParser {
      */
     transferToNewElement({ filePath, classAst, prefix }) {
         const properties = classAst.getProperties();
-        let elements = [];
+        const elements = [];
         for (const property of properties) {
             const name = prefix ? `${prefix}.${property.getName()}` : property.getName();
             const node = property.getJsDocs()[0];
             const comment = node ? node.getComment() : property.getName();
             const description = prefix ? `${prefix} > ${comment}` : comment;
-            let type = property.getType().getText();
+            const type = property.getType().getText();
             let transferType = type;
             if (!this.isNativeType(type)) {
                 transferType = transferType.includes('[]') ? 'Object[]' : 'Object';

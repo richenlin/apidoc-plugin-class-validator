@@ -48,13 +48,13 @@ export class ApiClassParser {
    */
   private transferToNewElement({ filePath, classAst, prefix }: any): IElement[] {
     const properties = classAst.getProperties()
-    let elements: IElement[] = []
+    const elements: IElement[] = []
     for (const property of properties) {
       const name = prefix ? `${prefix}.${property.getName()}` : property.getName()
       const node = property.getJsDocs()[0]
       const comment = node ? node.getComment() : property.getName()
       const description = prefix ? `${prefix} > ${comment}` : comment
-      let type = property.getType().getText()
+      const type = property.getType().getText()
       let transferType = type
       if (!this.isNativeType(type)) {
         transferType = transferType.includes('[]') ? 'Object[]' : 'Object'
