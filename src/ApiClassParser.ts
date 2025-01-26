@@ -17,7 +17,7 @@ export class ApiClassParser {
   private ast
   private typeMap: any = {
     'apiSuccessClass': 'apiSuccess',
-    'apiParamClass': 'apiParam'
+    'apiParamClass': 'apiBody',
   }
 
   constructor(type: string) {
