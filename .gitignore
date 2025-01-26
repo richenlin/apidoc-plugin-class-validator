@@ -62,3 +62,4 @@ typings/
 
 dist/
 docs/
+jest-html-reporters-attach/
